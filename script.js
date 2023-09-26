@@ -63,7 +63,7 @@ if(toggleScissor) {
 
 //event listener if play turn button is clicked
 turnBtn.addEventListener('click', () => {
-    btnTimeOut(turnCounter);
+    btnTimeOut();
     //get a random value from 0-2
     const rand = Math.floor(Math.random() * 3);
     //rock == 0 | paper == 1 | scissor == 2
@@ -128,7 +128,7 @@ restartBtn.addEventListener('click', () => {
     location.reload();
 });
 
-function checkScore(a, b, c, turn) {
+function checkScore(a, b, turn) {
     if(turn == 0) {
         if(a == b) {
             document.getElementById('anouncement').innerHTML = "Its a DRAW!!";
@@ -143,16 +143,14 @@ function checkScore(a, b, c, turn) {
     } else return;
 }
 
-function btnTimeOut(turn) {
+function btnTimeOut() {
     turnBtn.disabled = true;
 
-    if(turn != 0) {
-        setTimeout(() => {
-            turnBtn.disabled = false;
-            //reset class list of both bot and player
-            botTurn.classList.remove('rock', 'paper', 'scissor');
-            playerTurn.classList.remove('rock', 'paper', 'scissor');
-        }, 3000);
-    }
+    setTimeout(() => {
+        turnBtn.disabled = false;
+        //reset class list of both bot and player
+        botTurn.classList.remove('rock', 'paper', 'scissor');
+        playerTurn.classList.remove('rock', 'paper', 'scissor');
+    }, 3000);
 }
 
