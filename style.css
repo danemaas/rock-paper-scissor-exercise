@@ -1,0 +1,142 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
+/* BASE */
+body {
+    font-size: 62.5%;
+    font-family: 'Mochiy Pop One', sans-serif;
+}
+
+.bot-turn {
+    width: 100px;
+    height: 100px;
+}
+
+.player-turn {
+    width: 100px;
+    height: 100px;
+}
+
+.rock {
+    background-image: url(images/rock.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.paper {
+    background-image: url(images/paper.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.scissor {
+    background-image: url(images/scissor.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.rock:hover, .paper:hover, .scissor:hover {
+    transform: scale(1.1);
+}
+
+.play {
+    width: 568px;
+    height: 450px;
+    margin: 5rem auto;
+    border-radius: 2rem;
+    box-shadow: 0 0 15px black;
+}
+
+.login-section {
+    width: 568px;
+    height: 500px;
+    margin: 5rem auto;
+    border-radius: 2rem;
+    box-shadow: 0 0 15px black;
+}
+
+.login-section img {
+    width: 300px;
+    display: block;
+    margin: 0 auto;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.wrapper input {
+    padding-inline: 1rem;
+    padding-block: .5rem;
+}
+
+
+.scores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    font-size: 1rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid gray;
+}
+
+.display {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 5rem;
+    padding-block: 2rem;
+}
+
+.display div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bot-turn, .player-turn {
+    visibility: hidden;
+}
+
+.select-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding-bottom: 1rem;
+}
+
+.button {
+    display: block;
+    margin: 0 auto;
+    padding-inline: 1rem;
+    padding-block: .5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: aqua;
+    transition: .3s;
+}
+
+.button:hover {
+    box-shadow: 0 0 5px aqua;
+}
