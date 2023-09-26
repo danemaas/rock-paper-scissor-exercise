@@ -6,23 +6,35 @@ const toggleScissor = document.getElementById('scissor');
 const login = document.getElementById('login');
 const play = document.getElementById('play');
 const playerName = document.getElementById('playerName');
-let win = 0, draw = 0, lose = 0;
+const dropDownBtn = document.getElementById('dropdownBtn');
+const playBtn = document.getElementById('playBtn');
+const turnBtn = document.getElementById('turnBtn');
+const restartBtn = document.getElementById('restartBtn');
+let win = 0, draw = 0, lose = 0, turnCounter = 0;
 
-// function to get player name and display game after clicking the play button
-function toggleGame() {
-    //display player name in the game.
-    if(playerName.value != "") {
-        document.getElementById('player').innerHTML = playerName.value;
+//click event listener to the play button
+playBtn.addEventListener("click", () => {
+    const selectedOption = dropDownBtn.value;
+    if (selectedOption !== "") {
+        //display player name in the game.
+        if(playerName.value != "") {
+            document.getElementById('player').innerHTML = playerName.value;
+        } else {
+         document.getElementById('player').innerHTML = "anonymous";
+        }
+        document.getElementById('anouncement').innerHTML = "Best of " + selectedOption;
+        turnCounter = parseInt(selectedOption);
+        login.classList.add('d-none'); //hide the login section
+        play.classList.remove('d-none'); //display the game section
     } else {
-        document.getElementById('player').innerHTML = "player";
+      //the user has not selected an option
+      //display an alert to instruct the player
+      alert("Please select turns before playing.");
     }
-    
-    login.classList.add('d-none'); //hide the login section
-    play.classList.remove('d-none'); //display the game section
-}
+});
 
 //validate if the player clicked the rock image
-if(toggleRock) {     
+if(toggleRock) {
     toggleRock.addEventListener('click', () => {
         //reset the class list
         playerTurn.classList.remove('paper', 'scissor');
@@ -49,11 +61,11 @@ if(toggleScissor) {
     });
 }
 
-//this will generate the bot's turn and check the current turn if win, draw or lose
-function togglePlay() {
+//event listener if play turn button is clicked
+turnBtn.addEventListener('click', () => {
+    btnTimeOut(turnCounter);
     //get a random value from 0-2
     const rand = Math.floor(Math.random() * 3);
-
     //rock == 0 | paper == 1 | scissor == 2
     if (rand === 0) {
         botTurn.classList.remove('paper', 'scissor'); //reset class list
@@ -71,6 +83,9 @@ function togglePlay() {
             lose++;
             document.getElementById('lose').innerHTML = lose;
         }
+
+        turnCounter--;
+        checkScore(win, lose, draw, turnCounter);
     } else if (rand === 1) {
         botTurn.classList.remove('rock', 'scissor');
         botTurn.classList.add('paper');
@@ -85,6 +100,9 @@ function togglePlay() {
             lose++;
             document.getElementById('lose').innerHTML = lose;
         }
+
+        turnCounter--;
+        checkScore(win, lose, turnCounter);
     } else {
         botTurn.classList.remove('paper', 'rock');
         botTurn.classList.add('scissor');
@@ -99,6 +117,42 @@ function togglePlay() {
             lose++;
             document.getElementById('lose').innerHTML = lose;
         }
+
+        turnCounter--;
+        checkScore(win, lose, turnCounter);
+    }
+});
+
+//restart the whole game
+restartBtn.addEventListener('click', () => {
+    location.reload();
+});
+
+function checkScore(a, b, c, turn) {
+    if(turn == 0) {
+        if(a == b) {
+            document.getElementById('anouncement').innerHTML = "Its a DRAW!!";
+        } else if(a > b) {
+            document.getElementById('anouncement').innerHTML = "You won!!";
+        } else {
+                document.getElementById('anouncement').innerHTML = "You lose!!";
+        }
+        document.getElementById('selector').classList.add('d-none');
+        turnBtn.classList.add('d-none');
+        restartBtn.classList.remove('d-none');
+    } else return;
+}
+
+function btnTimeOut(turn) {
+    turnBtn.disabled = true;
+
+    if(turn != 0) {
+        setTimeout(() => {
+            turnBtn.disabled = false;
+            //reset class list of both bot and player
+            botTurn.classList.remove('rock', 'paper', 'scissor');
+            playerTurn.classList.remove('rock', 'paper', 'scissor');
+        }, 3000);
     }
 }
 

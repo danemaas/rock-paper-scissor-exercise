@@ -54,7 +54,7 @@ body {
 .play {
     width: 568px;
     height: 450px;
-    margin: 5rem auto;
+    margin: 2rem auto;
     border-radius: 2rem;
     box-shadow: 0 0 15px black;
 }
@@ -85,7 +85,6 @@ body {
     padding-inline: 1rem;
     padding-block: .5rem;
 }
-
 
 .scores {
     display: flex;
@@ -139,4 +138,17 @@ body {
 
 .button:hover {
     box-shadow: 0 0 5px aqua;
+}
+
+.wrapper div {
+    display: flex;
+    gap: 1rem;
+    outline: none;
+}
+
+.anouncement {
+    display: block;
+    text-align: center;
+    padding-top: 5rem;
+    font-size: 3rem;
 }

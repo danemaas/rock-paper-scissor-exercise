@@ -22,10 +22,36 @@
         </div>
         <div class="wrapper">
           <h1 class="title">Rock Paper Scissor</h1>
-          <input type="text" placeholder="Enter your name" id="playerName" />
-          <button class="button" onclick="toggleGame()">Play Game</button>
+          <div>
+            <input type="text" placeholder="Enter your name" id="playerName" />
+            <select id="dropdownBtn">
+              <option value="" disabled selected>Select # of turn</option>
+              <option value="3">3</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+            </select>
+            <!-- <div class="dropdown custom-dropdown">
+              <button
+                class="btn dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+              >
+                Select # of turn
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" id="turn1">3</a></li>
+                <li><a class="dropdown-item" id="turn2">5</a></li>
+                <li><a class="dropdown-item" id="turn3">10</a></li>
+              </ul>
+            </div> -->
+          </div>
+
+          <button class="button" id="playBtn">Play Game</button>
         </div>
       </section>
+
+      <span class="anouncement" id="anouncement"></span>
 
       <section class="play d-none" id="play">
         <div class="scores">
@@ -52,12 +78,13 @@
             <span class="player text-uppercase" id="player">Player</span>
           </div>
         </div>
-        <div class="select-wrapper">
+        <div class="select-wrapper" id="selector">
           <div class="rock" id="rock"></div>
           <div class="paper" id="paper"></div>
           <div class="scissor" id="scissor"></div>
         </div>
-        <button class="button" onclick="togglePlay()">Play Turn</button>
+        <button class="button" id="turnBtn">Play Turn</button>
+        <button class="button d-none" id="restartBtn">Restart Game</button>
       </section>
     </main>
   </body>
