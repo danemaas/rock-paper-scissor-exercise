@@ -47,7 +47,9 @@ body {
     transition: .3s;
 }
 
-.rock:hover, .paper:hover, .scissor:hover {
+.rock:hover,
+.paper:hover,
+.scissor:hover {
     transform: scale(1.1);
 }
 
@@ -112,7 +114,8 @@ body {
     gap: 1rem;
 }
 
-.bot-turn, .player-turn {
+.bot-turn,
+.player-turn {
     visibility: hidden;
 }
 
